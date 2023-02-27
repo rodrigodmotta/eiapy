@@ -32,7 +32,7 @@ class Series(object):
         self.session = session
 
     def _url(self, path):
-        url = 'https://api.eia.gov/series/?api_key={}&series_id={}'.format(API_KEY, self.series_id)
+        url = 'https://api.eia.gov/v2/series/?api_key={}&series_id={}'.format(API_KEY, self.series_id)
         return url + path
 
     def _fetch(self, url):
@@ -77,7 +77,7 @@ class Series(object):
         return data
 
     def _url_categories(self):
-        url = 'https://api.eia.gov/series/categories/?series_id={}&api_key={}'.format(self.series_id, API_KEY)
+        url = 'https://api.eia.gov/v2/series/categories/?series_id={}&api_key={}'.format(self.series_id, API_KEY)
         return url
 
     def categories(self):
@@ -129,7 +129,7 @@ class Geoset(object):
         self.session = session
 
     def _url(self, path):
-        url = 'https://api.eia.gov/geoset/?geoset_id={}&regions={}&api_key={}'.format(self.geoset_id, self.regions, API_KEY)
+        url = 'https://api.eia.gov/v2/geoset/?geoset_id={}&regions={}&api_key={}'.format(self.geoset_id, self.regions, API_KEY)
         return url + path
 
     def _fetch(self, url):
@@ -266,9 +266,9 @@ class Category(object):
 
     def get_info(self):
         if self.category_id is not None:
-            url = 'https://api.eia.gov/category/?api_key={}&category_id={}'.format(API_KEY, self.category_id)
+            url = 'https://api.eia.gov/v2/category/?api_key={}&category_id={}'.format(API_KEY, self.category_id)
         else:
-            url = 'https://api.eia.gov/category/?api_key={}'.format(API_KEY)
+            url = 'https://api.eia.gov/v2/category/?api_key={}'.format(API_KEY)
 
         data = self._fetch(url)
         return data
@@ -292,7 +292,7 @@ class Updates(object):
         self.session = session
 
     def _url(self, path):
-        url = 'https://api.eia.gov/updates/?api_key={}'.format(API_KEY)
+        url = 'https://api.eia.gov/v2/updates/?api_key={}'.format(API_KEY)
         return url + path
 
     def _fetch(self, url):
@@ -346,7 +346,7 @@ class Search(object):
         self.session = session
 
     def _url(self, path):
-        url = 'https://api.eia.gov/search/?search_value={}'.format(self.search_value)
+        url = 'https://api.eia.gov/v2/search/?search_value={}'.format(self.search_value)
         return url + path
 
     def _fetch(self, url):
