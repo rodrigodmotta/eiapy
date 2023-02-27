@@ -32,7 +32,7 @@ class Series(object):
         self.session = session
 
     def _url(self, path):
-        url = 'https://api.eia.gov/v2/series/?api_key={}&series_id={}'.format(API_KEY, self.series_id)
+        url = 'https://api.eia.gov/v2/seriesid/{}?api_key={}'.format(self.series_id,API_KEY)
         return url + path
 
     def _fetch(self, url):
